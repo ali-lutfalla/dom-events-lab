@@ -13,6 +13,7 @@ let operator ='';
 let total = 0;
 let totalHolder = 0;
 display.textContent = 0;
+let negativeAlert = false;
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -28,6 +29,12 @@ calculator.addEventListener('click', (event) => {
         console.log(number1);
       }
       if (operator !== '') {
+        if (negativeAlert === true){
+            number2 = Number(number2+event.target.innerText);
+            number2 = -number2;
+            display.textContent = (number1+" "+operator+" "+number2);
+            return;
+        }
         number2 = Number(number2+event.target.innerText);
         display.textContent = (number1+" "+operator+" "+number2);
         console.log(number2);
@@ -62,7 +69,15 @@ calculator.addEventListener('click', (event) => {
       }
   
       if (event.target.innerText === '-') {
-          // Do something with this operator
+          // Target this in the break
+          if (operator === '-' || operator === '/' || operator === '*' || operator === '+' ){ 
+            // the previous steps was to overwrite any operator and new one but this step and 
+            // that's for the sake of adding negative numbers
+            negativeAlert = true;
+            console.log('reach');
+            display.innerText = (number1 +" "+operator+" "+"-");
+            return;
+          }
           operator = event.target.innerText;
           display.innerText = (number1 +" "+operator);
       }
