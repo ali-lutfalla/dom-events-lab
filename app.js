@@ -130,22 +130,25 @@ calculator.addEventListener('click', (event) => {
         if (operator === '+'){
             total = add(number1,number2);
             display.innerText = `${display.innerText} = ${total}`;
-            console.log(total);
+            negativeAlert = false;
         }
 
         if (operator === '/'){
             total = divide(number1,number2);
             display.innerText = `${display.innerText} = ${total}`;
+            negativeAlert = false;
         }
 
         if (operator === '-'){
             total = substract(number1,number2);
             display.innerText = `${display.innerText} = ${total}`;
+            negativeAlert = false;
         }
 
         if (operator === '*'){
             total = multiply(number1,number2);
             display.innerText = `${display.innerText} = ${total}`;
+            negativeAlert = false;
         }
         
       }
